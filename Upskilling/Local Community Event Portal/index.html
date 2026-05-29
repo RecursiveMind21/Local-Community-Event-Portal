@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Portal v1 - Foundation</title>
+    <title>Community Portal v2 - Forms & Media</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,6 @@
             color: #1a2a3a;
         }
 
-        /* Navigation Styles */
         nav {
             background: #0f172a;
             padding: 1rem 2rem;
@@ -39,7 +38,6 @@
             background: #334155;
         }
 
-        /* Section styling */
         section {
             background: white;
             margin: 2rem auto;
@@ -56,7 +54,6 @@
             padding-left: 1rem;
         }
 
-        /* Welcome Banner */
         #welcomeBanner {
             background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: white;
@@ -75,7 +72,6 @@
             font-weight: bold;
         }
 
-        /* Image Gallery Table */
         .gallery-table {
             width: 100%;
             border-collapse: separate;
@@ -89,12 +85,73 @@
             border: 3px solid #cbd5e1;
             border-radius: 12px;
             object-fit: cover;
+            transition: 0.2s;
+            cursor: pointer;
         }
 
         figcaption {
             margin-top: 8px;
             font-weight: bold;
-            color: #2c3e66;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.4rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background: #1e293b;
+        }
+
+        output {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #d9f99d;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        #eventFee {
+            margin-top: 5px;
+            font-weight: bold;
+            color: #1e4620;
+        }
+
+        .char-counter {
+            font-size: 0.85rem;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 12px;
         }
 
         footer {
@@ -112,76 +169,179 @@
 </head>
 <body>
 
-<!-- ========== NAVIGATION (Task 2) ========== -->
 <nav>
     <a href="#home">Home</a>
     <a href="#events">Events</a>
+    <a href="#registration">Register</a>
     <a href="#contacts">Contact</a>
     <a href="help.html" target="_blank">Help</a>
 </nav>
 
-<!-- ========== WELCOME BANNER (Task 3) ========== -->
 <div id="welcomeBanner">
     <h1>Welcome to Community Portal</h1>
-    <p>Connecting neighbors through events and services</p>
-    <p><span class="highlight">✨ Logged in as Resident ✨</span></p>
+    <p><span class="highlight">🎯 Version 2: Registration & Media Added</span></p>
     <p><span style="color: #FFD966; font-weight: bold;">🎉 Special Offer: First Event Free! 🎉</span></p>
 </div>
 
-<!-- ========== HOME SECTION ========== -->
 <section id="home">
-    <h2>🏠 Welcome Home</h2>
-    <p>Your local community hub for events, registrations, and updates. Use the navigation to explore past events and get involved.</p>
+    <h2>🏠 Community Hub</h2>
+    <p>Register for events, watch promos, and connect with neighbors.</p>
 </section>
 
-<!-- ========== EVENTS & GALLERY (Task 4 - Table with images) ========== -->
+<!-- Image Gallery (same as v1) -->
 <section id="events">
-    <h2>📸 Past Community Events</h2>
+    <h2>📸 Past Events Gallery</h2>
     <table class="gallery-table">
         <tr>
-            <td>
-                <img src="https://picsum.photos/id/15/220/160" alt="Music Festival" title="Summer Music Fest" class="event-img">
-                <figcaption>🎵 Music Festival 2025</figcaption>
-            </td>
-            <td>
-                <img src="https://picsum.photos/id/26/220/160" alt="Cleanup Drive" title="Community Cleanup" class="event-img">
-                <figcaption>🌿 Earth Day Cleanup</figcaption>
-            </td>
-            <td>
-                <img src="https://picsum.photos/id/29/220/160" alt="Sports Event" title="Sports Tournament" class="event-img">
-                <figcaption>⚽ Sports League</figcaption>
-            </td>
-        </table>
+            <td><img src="https://picsum.photos/id/15/220/160" alt="Music Fest" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Music Festival</figcaption></td>
+            <td><img src="https://picsum.photos/id/26/220/160" alt="Cleanup" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Cleanup Drive</figcaption></td>
+            <td><img src="https://picsum.photos/id/29/220/160" alt="Sports" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Sports League</figcaption></td>
+        </tr>
         <tr>
-            <td>
-                <img src="https://picsum.photos/id/30/220/160" alt="Charity Gala" title="Fundraising Event" class="event-img">
-                <figcaption>🍽️ Charity Gala</figcaption>
-            </td>
-            <td>
-                <img src="https://picsum.photos/id/94/220/160" alt="Art Workshop" title="Creative Workshop" class="event-img">
-                <figcaption>🎨 Art Workshop</figcaption>
-            </td>
-            <td>
-                <img src="https://picsum.photos/id/96/220/160" alt="Yoga Event" title="Wellness Retreat" class="event-img">
-                <figcaption>🧘 Yoga Retreat</figcaption>
-            </td>
+            <td><img src="https://picsum.photos/id/30/220/160" alt="Gala" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Charity Gala</figcaption></td>
+            <td><img src="https://picsum.photos/id/94/220/160" alt="Art" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Art Workshop</figcaption></td>
+            <td><img src="https://picsum.photos/id/96/220/160" alt="Yoga" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Yoga Retreat</figcaption></td>
         </tr>
     </table>
-    <p style="text-align: center; margin-top: 1rem;">✨ 6 memorable community moments ✨</p>
+    <p style="text-align:center;">✨ Double-click any image to enlarge ✨</p>
 </section>
 
-<!-- ========== CONTACT SECTION ========== -->
+<!-- ========== REGISTRATION FORM (Task 5 & 6) ========== -->
+<section id="registration">
+    <h2>📋 Event Registration</h2>
+    <form id="regForm">
+        <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="userName" placeholder="Enter your name" required autofocus>
+        </div>
+
+        <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="userEmail" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label>Phone (10 digits)</label>
+            <input type="text" id="phone" placeholder="9876543210" onblur="validatePhone()">
+            <small id="phoneError" style="color:red;"></small>
+        </div>
+
+        <div class="form-group">
+            <label>Event Date</label>
+            <input type="date" id="eventDate" required>
+        </div>
+
+        <div class="form-group">
+            <label>Event Type</label>
+            <select id="eventType" onchange="showEventFee()">
+                <option value="">Select Event</option>
+                <option value="music">Music Festival - $15</option>
+                <option value="sports">Sports Tournament - $10</option>
+                <option value="cleanup">Cleanup Campaign - Free</option>
+            </select>
+            <div id="eventFee"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Feedback</label>
+            <textarea id="feedback" rows="3" onkeyup="countCharacters()" placeholder="Share your thoughts..."></textarea>
+            <div class="char-counter" id="charCount">Characters: 0</div>
+        </div>
+
+        <button type="button" onclick="submitRegistration()">Submit Registration</button>
+        <output id="confirmMsg"></output>
+    </form>
+</section>
+
+<!-- ========== VIDEO PROMO (Task 7) ========== -->
+<section>
+    <h2>🎬 Event Promo Video</h2>
+    <video id="promoVideo" controls oncanplay="videoReady()">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser doesn't support video.
+    </video>
+    <p id="videoStatus" style="margin-top: 10px; font-weight: bold;"></p>
+</section>
+
 <section id="contacts">
-    <h2>📞 Contact Us</h2>
+    <h2>📞 Contact</h2>
     <p>Email: community@localcouncil.gov | Phone: (555) 123-4567</p>
-    <p>Office: 123 Main Street, City Hall</p>
 </section>
 
-<!-- ========== FOOTER ========== -->
 <footer>
-    <p>© 2026 Local Community Portal | Building stronger neighborhoods</p>
-    <a href="help.html" target="_blank">External Help Guide</a>
+    <p>© 2026 Community Portal | <a href="help.html" target="_blank">Help Guide</a></p>
 </footer>
+
+<script>
+    // Task 6: Phone validation on blur
+    function validatePhone() {
+        let phone = document.getElementById("phone").value;
+        if (phone.length !== 0 && (phone.length !== 10 || isNaN(phone))) {
+            document.getElementById("phoneError").innerText = "Enter valid 10-digit number";
+            return false;
+        } else {
+            document.getElementById("phoneError").innerText = "";
+            return true;
+        }
+    }
+
+    // Task 6: Show fee on change
+    function showEventFee() {
+        let type = document.getElementById("eventType").value;
+        let fee = "";
+        if (type === "music") fee = "🎸 Fee: $15";
+        else if (type === "sports") fee = "🏅 Fee: $10";
+        else if (type === "cleanup") fee = "🌿 Fee: FREE";
+        else fee = "Please select an event";
+        document.getElementById("eventFee").innerHTML = `<strong>${fee}</strong>`;
+    }
+
+    // Task 6: Character counter on keyup
+    function countCharacters() {
+        let text = document.getElementById("feedback").value;
+        document.getElementById("charCount").innerHTML = `Characters: ${text.length}`;
+    }
+
+    // Task 5: Show confirmation using output
+    function submitRegistration() {
+        let name = document.getElementById("userName").value;
+        let email = document.getElementById("userEmail").value;
+        let eventSelect = document.getElementById("eventType").value;
+        
+        if (!name || !email || !eventSelect) {
+            document.getElementById("confirmMsg").innerText = "❌ Please fill all required fields!";
+            return;
+        }
+        document.getElementById("confirmMsg").innerText = `✅ Thank you ${name}! Registration confirmed for ${eventSelect}. Check your email.`;
+    }
+
+    // Task 6: Double-click enlarge image
+    function enlargeImage(img) {
+        if (img.style.width === "400px") {
+            img.style.width = "220px";
+            img.style.height = "160px";
+        } else {
+            img.style.width = "400px";
+            img.style.height = "280px";
+        }
+    }
+
+    // Task 7: Video ready message
+    function videoReady() {
+        document.getElementById("videoStatus").innerHTML = "🎥 Video ready to play! Click play to watch.";
+    }
+
+    // Set default date
+    window.onload = function() {
+        let today = new Date();
+        let tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+        let yyyy = tomorrow.getFullYear();
+        let mm = String(tomorrow.getMonth() + 1).padStart(2,'0');
+        let dd = String(tomorrow.getDate()).padStart(2,'0');
+        document.getElementById("eventDate").value = `${yyyy}-${mm}-${dd}`;
+    };
+</script>
 
 </body>
 </html>
