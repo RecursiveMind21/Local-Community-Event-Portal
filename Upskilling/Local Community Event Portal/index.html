@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Portal v2 - Forms & Media</title>
+    <title>Community Portal v3 - Complete Edition</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f2f5;
+            background: #eef2f5;
             color: #1a2a3a;
         }
 
@@ -23,6 +23,7 @@
             text-align: center;
             position: sticky;
             top: 0;
+            z-index: 100;
         }
 
         nav a {
@@ -44,13 +45,13 @@
             padding: 2rem;
             max-width: 1100px;
             border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         h2 {
             color: #0f172a;
-            margin-bottom: 1rem;
-            border-left: 4px solid #0f172a;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #0f172a;
             padding-left: 1rem;
         }
 
@@ -67,7 +68,7 @@
         .highlight {
             background: #ffd966;
             color: #1e2a3e;
-            padding: 0.2rem 0.6rem;
+            padding: 0.2rem 0.8rem;
             border-radius: 20px;
             font-weight: bold;
         }
@@ -94,7 +95,6 @@
             font-weight: bold;
         }
 
-        /* Form Styles */
         .form-group {
             margin-bottom: 1.2rem;
         }
@@ -122,6 +122,7 @@
             cursor: pointer;
             font-weight: bold;
             margin-right: 10px;
+            margin-top: 10px;
         }
 
         button:hover {
@@ -140,7 +141,10 @@
         #eventFee {
             margin-top: 5px;
             font-weight: bold;
-            color: #1e4620;
+            background: #e6f0ff;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
         }
 
         .char-counter {
@@ -154,10 +158,24 @@
             border-radius: 12px;
         }
 
+        .location-box {
+            background: #eef2ff;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        .pref-bar {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         footer {
             background: #0f172a;
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem;
             margin-top: 2rem;
         }
 
@@ -170,30 +188,31 @@
 <body>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#events">Events</a>
-    <a href="#registration">Register</a>
-    <a href="#contacts">Contact</a>
-    <a href="help.html" target="_blank">Help</a>
+    <a href="#home">🏠 Home</a>
+    <a href="#events">📅 Events</a>
+    <a href="#registration">📝 Register</a>
+    <a href="#preferences">⚙️ Preferences</a>
+    <a href="#contacts">📞 Contact</a>
+    <a href="help.html" target="_blank">❓ Help</a>
 </nav>
 
 <div id="welcomeBanner">
-    <h1>Welcome to Community Portal</h1>
-    <p><span class="highlight">🎯 Version 2: Registration & Media Added</span></p>
-    <p><span style="color: #FFD966; font-weight: bold;">🎉 Special Offer: First Event Free! 🎉</span></p>
+    <h1>✨ Community Event Portal v3 ✨</h1>
+    <p><span class="highlight">🎯 Complete Edition: Save Preferences + Find Nearby Events</span></p>
+    <p><span style="color: #FFD966; font-weight: bold;">🎁 Special Offer: First Event Free + Geolocation Rewards 🎁</span></p>
 </div>
 
 <section id="home">
-    <h2>🏠 Community Hub</h2>
-    <p>Register for events, watch promos, and connect with neighbors.</p>
+    <h2>🏘️ Your Complete Community Hub</h2>
+    <p>✓ Register for events ✓ Watch promos ✓ Save preferences ✓ Find events near you</p>
 </section>
 
-<!-- Image Gallery (same as v1) -->
+<!-- Gallery Section -->
 <section id="events">
     <h2>📸 Past Events Gallery</h2>
     <table class="gallery-table">
         <tr>
-            <td><img src="https://picsum.photos/id/15/220/160" alt="Music Fest" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Music Festival</figcaption></td>
+            <td><img src="https://picsum.photos/id/15/220/160" alt="Music" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Music Festival</figcaption></td>
             <td><img src="https://picsum.photos/id/26/220/160" alt="Cleanup" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Cleanup Drive</figcaption></td>
             <td><img src="https://picsum.photos/id/29/220/160" alt="Sports" class="event-img" ondblclick="enlargeImage(this)"><figcaption>Sports League</figcaption></td>
         </tr>
@@ -206,7 +225,7 @@
     <p style="text-align:center;">✨ Double-click any image to enlarge ✨</p>
 </section>
 
-<!-- ========== REGISTRATION FORM (Task 5 & 6) ========== -->
+<!-- Registration Form -->
 <section id="registration">
     <h2>📋 Event Registration</h2>
     <form id="regForm">
@@ -214,66 +233,94 @@
             <label>Full Name *</label>
             <input type="text" id="userName" placeholder="Enter your name" required autofocus>
         </div>
-
         <div class="form-group">
             <label>Email *</label>
             <input type="email" id="userEmail" placeholder="you@example.com" required>
         </div>
-
         <div class="form-group">
             <label>Phone (10 digits)</label>
             <input type="text" id="phone" placeholder="9876543210" onblur="validatePhone()">
             <small id="phoneError" style="color:red;"></small>
         </div>
-
         <div class="form-group">
             <label>Event Date</label>
             <input type="date" id="eventDate" required>
         </div>
-
         <div class="form-group">
             <label>Event Type</label>
-            <select id="eventType" onchange="showEventFee()">
+            <select id="eventType" onchange="handleEventChange()">
                 <option value="">Select Event</option>
                 <option value="music">Music Festival - $15</option>
                 <option value="sports">Sports Tournament - $10</option>
                 <option value="cleanup">Cleanup Campaign - Free</option>
+                <option value="art">Art Workshop - $8</option>
             </select>
             <div id="eventFee"></div>
         </div>
-
         <div class="form-group">
             <label>Feedback</label>
             <textarea id="feedback" rows="3" onkeyup="countCharacters()" placeholder="Share your thoughts..."></textarea>
             <div class="char-counter" id="charCount">Characters: 0</div>
         </div>
-
         <button type="button" onclick="submitRegistration()">Submit Registration</button>
         <output id="confirmMsg"></output>
     </form>
 </section>
 
-<!-- ========== VIDEO PROMO (Task 7) ========== -->
+<!-- Video Promo -->
 <section>
     <h2>🎬 Event Promo Video</h2>
     <video id="promoVideo" controls oncanplay="videoReady()">
         <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-        Your browser doesn't support video.
     </video>
     <p id="videoStatus" style="margin-top: 10px; font-weight: bold;"></p>
 </section>
 
+<!-- Geolocation Section (Task 9) -->
+<section id="geolocation">
+    <h2>📍 Find Nearby Events</h2>
+    <button onclick="findNearbyEvents()">🔍 Find My Location</button>
+    <div id="locationInfo" class="location-box">
+        <p>Click above to discover events near you</p>
+    </div>
+</section>
+
+<!-- Preferences (Task 8) -->
+<section id="preferences">
+    <h2>⚙️ Saved Preferences</h2>
+    <div class="pref-bar">
+        <button onclick="clearAllPreferences()">🗑️ Clear All Preferences</button>
+        <p><strong>Saved Event Type:</strong> <span id="savedPrefDisplay">None</span></p>
+    </div>
+    <p><small>Your event preference is automatically saved. Reload to see it preselected.</small></p>
+</section>
+
 <section id="contacts">
-    <h2>📞 Contact</h2>
+    <h2>📞 Contact Us</h2>
     <p>Email: community@localcouncil.gov | Phone: (555) 123-4567</p>
 </section>
 
 <footer>
-    <p>© 2026 Community Portal | <a href="help.html" target="_blank">Help Guide</a></p>
+    <p>© 2026 Complete Community Portal | <a href="help.html" target="_blank">Help Guide</a></p>
 </footer>
 
 <script>
-    // Task 6: Phone validation on blur
+    // ========== FORM DIRTY FLAG FOR BEFOREUNLOAD (Task 7) ==========
+    let formDirty = false;
+    document.querySelectorAll("#regForm input, #regForm select, #regForm textarea").forEach(el => {
+        el.addEventListener("input", () => { formDirty = true; });
+        el.addEventListener("change", () => { formDirty = true; });
+    });
+
+    window.addEventListener("beforeunload", (e) => {
+        if (formDirty) {
+            e.preventDefault();
+            e.returnValue = "You have unsaved changes!";
+            return "You have unsaved changes!";
+        }
+    });
+
+    // ========== TASK 6: Phone Validation ==========
     function validatePhone() {
         let phone = document.getElementById("phone").value;
         if (phone.length !== 0 && (phone.length !== 10 || isNaN(phone))) {
@@ -285,37 +332,50 @@
         }
     }
 
-    // Task 6: Show fee on change
-    function showEventFee() {
+    // ========== TASK 6 + TASK 8: Show fee & Save to localStorage ==========
+    function handleEventChange() {
         let type = document.getElementById("eventType").value;
         let fee = "";
         if (type === "music") fee = "🎸 Fee: $15";
         else if (type === "sports") fee = "🏅 Fee: $10";
         else if (type === "cleanup") fee = "🌿 Fee: FREE";
+        else if (type === "art") fee = "🎭 Fee: $8";
         else fee = "Please select an event";
         document.getElementById("eventFee").innerHTML = `<strong>${fee}</strong>`;
+        
+        if (type) {
+            localStorage.setItem("preferredEvent", type);
+            updatePrefDisplay();
+        }
     }
 
-    // Task 6: Character counter on keyup
+    function updatePrefDisplay() {
+        let saved = localStorage.getItem("preferredEvent");
+        document.getElementById("savedPrefDisplay").innerText = saved ? saved.toUpperCase() : "None";
+    }
+
+    // ========== TASK 6: Character Counter ==========
     function countCharacters() {
         let text = document.getElementById("feedback").value;
         document.getElementById("charCount").innerHTML = `Characters: ${text.length}`;
+        formDirty = true;
     }
 
-    // Task 5: Show confirmation using output
+    // ========== TASK 5: Submit with output ==========
     function submitRegistration() {
         let name = document.getElementById("userName").value;
         let email = document.getElementById("userEmail").value;
-        let eventSelect = document.getElementById("eventType").value;
+        let eventType = document.getElementById("eventType").value;
         
-        if (!name || !email || !eventSelect) {
+        if (!name || !email || !eventType) {
             document.getElementById("confirmMsg").innerText = "❌ Please fill all required fields!";
             return;
         }
-        document.getElementById("confirmMsg").innerText = `✅ Thank you ${name}! Registration confirmed for ${eventSelect}. Check your email.`;
+        document.getElementById("confirmMsg").innerText = `✅ ${name}, you're registered for ${eventType}! Confirmation sent to ${email}.`;
+        formDirty = false;
     }
 
-    // Task 6: Double-click enlarge image
+    // ========== TASK 6: Enlarge Image ==========
     function enlargeImage(img) {
         if (img.style.width === "400px") {
             img.style.width = "220px";
@@ -326,16 +386,61 @@
         }
     }
 
-    // Task 7: Video ready message
+    // ========== TASK 7: Video Ready ==========
     function videoReady() {
-        document.getElementById("videoStatus").innerHTML = "🎥 Video ready to play! Click play to watch.";
+        document.getElementById("videoStatus").innerHTML = "🎥 Video ready to play! Enjoy the promo.";
     }
 
-    // Set default date
+    // ========== TASK 9: Geolocation ==========
+    function findNearbyEvents() {
+        const locationDiv = document.getElementById("locationInfo");
+        locationDiv.innerHTML = "<p>📍 Getting your location with high accuracy...</p>";
+        
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude.toFixed(5);
+                const lon = position.coords.longitude.toFixed(5);
+                locationDiv.innerHTML = `<p>✅ Your location: ${lat}, ${lon}</p>
+                                         <p>🎉 Nearby events: Summer Fair (0.3 mi), Food Festival (0.7 mi), Park Concert (1.1 mi)</p>`;
+            },
+            (error) => {
+                if (error.code === 1) {
+                    locationDiv.innerHTML = "<p>❌ Permission denied. Enable location to see nearby events.</p>";
+                } else if (error.code === 3) {
+                    locationDiv.innerHTML = "<p>⏱️ Location request timed out. Please try again.</p>";
+                } else {
+                    locationDiv.innerHTML = "<p>⚠️ Error getting location.</p>";
+                }
+            },
+            { enableHighAccuracy: true, timeout: 8000 }
+        );
+    }
+
+    // ========== TASK 8: Clear localStorage & sessionStorage ==========
+    function clearAllPreferences() {
+        localStorage.clear();
+        sessionStorage.clear();
+        document.getElementById("eventType").value = "";
+        document.getElementById("eventFee").innerHTML = "";
+        updatePrefDisplay();
+        alert("All preferences cleared (localStorage & sessionStorage)");
+    }
+
+    // ========== LOAD SAVED PREFERENCE ==========
     window.onload = function() {
-        let today = new Date();
-        let tomorrow = new Date(today);
-        tomorrow.setDate(today.getDate() + 1);
+        let savedEvent = localStorage.getItem("preferredEvent");
+        if (savedEvent) {
+            let select = document.getElementById("eventType");
+            if (select.querySelector(`option[value="${savedEvent}"]`)) {
+                select.value = savedEvent;
+                handleEventChange();
+            }
+        }
+        updatePrefDisplay();
+        
+        // Set default date
+        let tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
         let yyyy = tomorrow.getFullYear();
         let mm = String(tomorrow.getMonth() + 1).padStart(2,'0');
         let dd = String(tomorrow.getDate()).padStart(2,'0');
