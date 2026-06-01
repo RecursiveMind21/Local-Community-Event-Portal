@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Portal | Events Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">🏘️ CommunityPortal</div>
+        <div class="nav-links">
+            <a href="index.html">🏠 Home</a>
+            <a href="events.html" class="active">📸 Events</a>
+            <a href="register.html">📝 Register</a>
+            <a href="contact.html">📞 Contact</a>
+            <a href="help.html" target="_blank">❓ Help</a>
+        </div>
+    </div>
+</nav>
+
+<div id="welcomeBanner" style="background: linear-gradient(135deg, #2e8b57, #1e5a3a);">
+    <h1>📸 Past Community Events Gallery</h1>
+    <p>Relive the memories and get inspired for upcoming events</p>
+    <span style="color: #FFD966;">✨ Double-click any image to enlarge ✨</span>
+</div>
+
+<main>
+    <section id="gallery">
+        <h2>Event Highlights 2025-2026</h2>
+        
+        <!-- Event Gallery Table (2x3 layout) -->
+        <table class="gallery-table">
+            <thead>
+                <tr><th colspan="3">Our Favorite Community Moments</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <figure>
+                            <img src="https://picsum.photos/id/15/280/180" 
+                                 alt="Summer Music Festival" 
+                                 title="Annual Music Fest 2025"
+                                 class="gallery-img" 
+                                 ondblclick="enlargeImage(this)">
+                            <figcaption>🎵 Summer Music Festival 2025<br><small>500+ attendees</small></figcaption>
+                        </figure>
+                    </td>
+                    <td>
+                        <figure>
+                            <img src="https://picsum.photos/id/26/280/180" 
+                                 alt="Community Cleanup" 
+                                 title="Earth Day Cleanup"
+                                 class="gallery-img" 
+                                 ondblclick="enlargeImage(this)">
+                            <figcaption>♻️ Earth Day Cleanup Drive<br><small>200 volunteers</small></figcaption>
+                        </figure>
+                    </td>
+                    <td>
+                        <figure>
+                            <img src="https://picsum.photos/id/29/280/180" 
+                                 alt="Sports Tournament" 
+                                 title="Annual Sports Meet"
+                                 class="gallery-img" 
+                                 ondblclick="enlargeImage(this)">
+                            <figcaption>⚽ Community Sports League<br><small>12 teams competed</small></figcaption>
+                        </figure>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <figure>
+                            <img src="https://picsum.photos/id/30/280/180" 
+                                 alt="Charity Gala" 
+                                 title="Fundraising Gala"
+                                 class="gallery-img" 
+                                 ondblclick="enlargeImage(this)">
+                            <figcaption>🍽️ Charity Gala Dinner<br><small>$10,000 raised</small></figcaption>
+                        </figure>
+                    </td>
+                    <td>
+                        <figure>
+                            <img src="https://picsum.photos/id/94/280/180" 
+                                 alt="Art Workshop" 
+                                 title="Creative Workshop"
+                                 class="gallery-img" 
+                                 ondblclick="enlargeImage(this)">
+                            <figcaption>🎨 Art & Craft Workshop<br><small>80 participants</small></figcaption>
+                        </figure>
+                    </td>
+                    <td>
+                        <figure>
+                            <img src="https://picsum.photos/id/96/280/180" 
+                                 alt="Yoga Retreat" 
+                                 title="Wellness Event"
+                                 class="gallery-img" 
+                                 ondblclick="enlargeImage(this)">
+                            <figcaption>🧘 Wellness & Yoga Retreat<br><small>150 attendees</small></figcaption>
+                        </figure>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Promo Video Section -->
+    <section id="promoVideo">
+        <h2>🎬 Watch: Community Event Highlights</h2>
+        <div class="video-container">
+            <video id="communityVideo" controls oncanplay="videoReady()">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p id="videoStatusMsg" class="video-status"></p>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Teaser -->
+    <section id="upcoming">
+        <h2>🔜 Upcoming Events</h2>
+        <div class="upcoming-grid">
+            <div class="upcoming-card">
+                <h3>🎪 Spring Carnival</h3>
+                <p>March 15, 2026 | City Park</p>
+                <a href="register.html" class="btn-link">Register →</a>
+            </div>
+            <div class="upcoming-card">
+                <h3>🎓 Tech Workshop</h3>
+                <p>March 22, 2026 | Community Center</p>
+                <a href="register.html" class="btn-link">Register →</a>
+            </div>
+            <div class="upcoming-card">
+                <h3>🌳 Tree Plantation</h3>
+                <p>April 5, 2026 | Green Valley</p>
+                <a href="register.html" class="btn-link">Register →</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Local Community Event Portal | Capture the moments that matter</p>
+    <div class="footer-links">
+        <a href="index.html">Back to Home</a>
+        <a href="register.html">Register for Events</a>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
