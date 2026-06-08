@@ -23,7 +23,7 @@
 </nav>
 
 <!-- ========== WELCOME BANNER ========== -->
-<div id="welcomeBanner">
+<div id="welcomeBanner" class="welcome-banner">
     <h1>✨ Welcome to Your Community Hub ✨</h1>
     <p>Connect • Participate • Grow Together</p>
     <div class="offer-badge">
@@ -37,6 +37,7 @@
     <section id="hero">
         <h2>Your Gateway to Local Events & Services</h2>
         <p>Discover, register, and participate in community events that matter to you.</p>
+        <h3 style="color: red; font-weight: bold;">🔥 Limited Time: Early Bird Discount!</h3>
     </section>
 
     <!-- Feature Cards -->
@@ -76,7 +77,52 @@
             <div class="stat">🌱 20+ Local Causes Supported</div>
         </div>
     </section>
-</ma
+
+        <!-- Quick Highlights -->
+    <section id="highlights">
+    <h2>📢 Community Highlights</h2>
+    <ul class="styled-list">
+        <li>🎉 150+ events organized in 2025</li>
+        <li>👥 5,000+ residents participated</li>
+        <li>🌱 20+ environmental initiatives</li>
+    </ul>
+    </section>
+
+
+<section>
+    <h2>📰 Community Bulletin</h2>
+    <div class="news-article">
+        <p>The annual summer music festival attracted over 1,200 residents this year. Local bands and food trucks made the event a huge success.</p>
+        <p>Volunteers collected 500 pounds of trash during the Earth Day cleanup. Thank you to everyone who participated!</p>
+        <p>A new community garden will open next month. Sign up for a plot on the registration page.</p>
+        <p>Upcoming workshop: "Digital Skills for Seniors" – free and open to all.</p>
+    </div>
+</section>
+
+<section>
+    <h2>🔍 CSS Demo: visibility vs display</h2>
+    <div class="demo-box">
+        <div>Normal block</div>
+        <div class="hidden-visibility">I am hidden with visibility: hidden (still takes space)</div>
+        <div class="hidden-display">I am hidden with display: none (no space)</div>
+    </div>
+    <button onclick="toggleVisibilityDemo()">Toggle Hidden Blocks</button>
+</section>
+
+<script>
+function toggleVisibilityDemo() {
+    const vis = document.querySelector('.hidden-visibility');
+    const dis = document.querySelector('.hidden-display');
+    if (vis.style.visibility === 'hidden') {
+        vis.style.visibility = 'visible';
+        dis.style.display = 'block';
+    } else {
+        vis.style.visibility = 'hidden';
+        dis.style.display = 'none';
+    }
+}
+</script>
+</main>
 <!-- ========== FOOTER ========== -->
 <footer>
     <p>© 2026 Local Community Event Portal | Building stronger neighborhoods together</p>

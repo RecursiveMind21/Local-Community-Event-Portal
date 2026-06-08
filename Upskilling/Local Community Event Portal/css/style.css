@@ -117,7 +117,7 @@ h3 {
     margin-top: 1rem;
 }
 
-.card {
+.card, .eventCard {
     background: #f8fafc;
     border-radius: 16px;
     padding: 1.5rem;
@@ -511,5 +511,168 @@ footer {
     .gallery-img {
         max-width: 200px;
         height: 140px;
+    }
+}
+
+/* ========== GOOGLE FONT ========== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap');
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png');
+    background-color: #f0f2f5; /* fallback */
+    background-repeat: repeat;
+}
+
+/* ========== TYPOGRAPHY ENHANCEMENTS ========== */
+h2 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+h3, p {
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.event-description {
+    text-align: justify;
+    text-transform: none;
+    letter-spacing: 0.3px;
+}
+
+/* ========== LINK PSEUDO-CLASSES ========== */
+a:link {
+    color: #1e3c72;
+    text-decoration: none;
+}
+a:visited {
+    color: #4b5563;
+}
+a:hover {
+    color: #f59e0b;
+    text-decoration: underline;
+}
+a:active {
+    color: #dc2626;
+}
+
+/* ========== LIST STYLING ========== */
+.styled-list {
+    list-style-type: square;
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+.styled-list li {
+    margin: 0.5rem 0;
+    padding: 0.25rem;
+}
+
+/* Remove bullets from nav */
+.nav-links {
+    list-style: none;
+}
+
+/* ========== TABLE STYLING (Admin / Events Table) ========== */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+.admin-table th, 
+.admin-table td {
+    border: 1px solid #cbd5e1;
+    padding: 12px;
+    text-align: center;
+}
+.admin-table th {
+    background: #0f172a;
+    color: white;
+}
+.admin-table tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+.admin-table tr:hover {
+    background-color: #e2e8f0;
+}
+
+/* ========== MULTI-COLUMN NEWS ARTICLE ========== */
+.news-article {
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid #94a3b8;
+    text-align: justify;
+}
+.news-article p {
+    margin-top: 0;
+    break-inside: avoid;
+}
+
+/* ========== OUTLINE ON FOCUS ========== */
+input:focus, select:focus, textarea:focus {
+    outline: 3px solid #f59e0b;
+    outline-offset: 2px;
+}
+
+/* ========== VISIBILITY vs DISPLAY NONE DEMO ========== */
+.demo-box {
+    background: #e2e8f0;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+.hidden-visibility {
+    visibility: hidden;
+    /* occupies space */
+}
+.hidden-display {
+    display: none;
+    /* removed from layout */
+}
+
+/* ========== RGBA BACKGROUND EXAMPLE ========== */
+.overlay-card {
+    background: rgba(30, 60, 114, 0.85);
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+/* ========== GRADIENT ON SECTION HEADERS ========== */
+section > h2 {
+    background: linear-gradient(120deg, #1e3c72, #2a5298);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    border-left: none;
+    padding-left: 0;
+}
+
+/* ========== IMPROVED MEDIA QUERY (STACK NAV) ========== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem;
+    }
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+    .news-article {
+        column-count: 1;
     }
 }
