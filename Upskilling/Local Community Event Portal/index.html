@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Portal | Home</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- jQuery CDN (Exercise 14) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<!-- ========== NAVIGATION (Shared across all pages) ========== -->
+<!-- ========== NAVIGATION ========== -->
 <nav>
     <div class="nav-container">
         <div class="logo">🏘️ CommunityPortal</div>
@@ -78,51 +80,86 @@
         </div>
     </section>
 
-        <!-- Quick Highlights -->
+    <!-- Quick Highlights (CSS list styling) -->
     <section id="highlights">
-    <h2>📢 Community Highlights</h2>
-    <ul class="styled-list">
-        <li>🎉 150+ events organized in 2025</li>
-        <li>👥 5,000+ residents participated</li>
-        <li>🌱 20+ environmental initiatives</li>
-    </ul>
+        <h2>📢 Community Highlights</h2>
+        <ul class="styled-list">
+            <li>🎉 150+ events organized in 2025</li>
+            <li>👥 5,000+ residents participated</li>
+            <li>🌱 20+ environmental initiatives</li>
+        </ul>
     </section>
 
+    <!-- Multi-column news (CSS exercise) -->
+    <section>
+        <h2>📰 Community Bulletin</h2>
+        <div class="news-article">
+            <p>The annual summer music festival attracted over 1,200 residents this year. Local bands and food trucks made the event a huge success.</p>
+            <p>Volunteers collected 500 pounds of trash during the Earth Day cleanup. Thank you to everyone who participated!</p>
+            <p>A new community garden will open next month. Sign up for a plot on the registration page.</p>
+            <p>Upcoming workshop: "Digital Skills for Seniors" – free and open to all.</p>
+        </div>
+    </section>
 
-<section>
-    <h2>📰 Community Bulletin</h2>
-    <div class="news-article">
-        <p>The annual summer music festival attracted over 1,200 residents this year. Local bands and food trucks made the event a huge success.</p>
-        <p>Volunteers collected 500 pounds of trash during the Earth Day cleanup. Thank you to everyone who participated!</p>
-        <p>A new community garden will open next month. Sign up for a plot on the registration page.</p>
-        <p>Upcoming workshop: "Digital Skills for Seniors" – free and open to all.</p>
-    </div>
-</section>
+    <!-- visibility vs display demo (CSS exercise) -->
+    <section>
+        <h2>🔍 CSS Demo: visibility vs display</h2>
+        <div class="demo-box">
+            <div>Normal block</div>
+            <div class="hidden-visibility">I am hidden with visibility: hidden (still takes space)</div>
+            <div class="hidden-display">I am hidden with display: none (no space)</div>
+        </div>
+        <button class="btn-primary" onclick="toggleVisibilityDemo()">Toggle Hidden Blocks</button>
+    </section>
 
-<section>
-    <h2>🔍 CSS Demo: visibility vs display</h2>
-    <div class="demo-box">
-        <div>Normal block</div>
-        <div class="hidden-visibility">I am hidden with visibility: hidden (still takes space)</div>
-        <div class="hidden-display">I am hidden with display: none (no space)</div>
-    </div>
-    <button onclick="toggleVisibilityDemo()">Toggle Hidden Blocks</button>
-</section>
-
-<script>
-function toggleVisibilityDemo() {
-    const vis = document.querySelector('.hidden-visibility');
-    const dis = document.querySelector('.hidden-display');
-    if (vis.style.visibility === 'hidden') {
-        vis.style.visibility = 'visible';
-        dis.style.display = 'block';
-    } else {
-        vis.style.visibility = 'hidden';
-        dis.style.display = 'none';
-    }
-}
-</script>
+    <!-- ========== DYNAMIC EVENTS SECTION (Improved UI) ========== -->
+    <section id="dynamicEvents">
+        <h2>📅 Live Upcoming Events</h2>
+        
+        <div class="filter-bar">
+            <select id="categoryFilter" onchange="filterEventsByCategory()">
+                <option value="all">📌 All Categories</option>
+                <option value="music">🎵 Music</option>
+                <option value="sports">⚽ Sports</option>
+                <option value="cleanup">🌿 Cleanup</option>
+                <option value="art">🎨 Art</option>
+                <option value="food">🍔 Food</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="🔍 Quick search by event name..." onkeydown="handleKeySearch(event)">
+            <button id="refreshEventsBtn" class="btn-primary" onclick="fetchEventsAsync()">🔄 Refresh from API</button>
+        </div>
+        
+        <div id="loadingSpinner" style="display: none;">⏳ Loading fresh events...</div>
+        <div id="eventsContainer" class="cards-container"></div>
+        
+        <!-- Add New Event Form - Improved Layout -->
+        <div style="margin-top: 2rem;">
+            <h3>➕ Add a New Community Event</h3>
+            <form id="addEventForm" onsubmit="return false;">
+                <div class="form-group">
+                    <input type="text" id="newEventName" placeholder="Event name" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" id="newEventDate" required>
+                </div>
+                <div class="form-group">
+                    <select id="newEventCategory">
+                        <option value="music">🎵 Music</option>
+                        <option value="sports">⚽ Sports</option>
+                        <option value="cleanup">🌿 Cleanup</option>
+                        <option value="art">🎨 Art</option>
+                        <option value="food">🍔 Food</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="newEventSeats" placeholder="Available seats" min="0" value="50">
+                </div>
+                <button type="button" class="btn-primary" onclick="addNewEvent()">➕ Add Event</button>
+            </form>
+        </div>
+    </section>
 </main>
+
 <!-- ========== FOOTER ========== -->
 <footer>
     <p>© 2026 Local Community Event Portal | Building stronger neighborhoods together</p>
@@ -134,5 +171,19 @@ function toggleVisibilityDemo() {
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+    // Small inline function for visibility demo (CSS exercise)
+    function toggleVisibilityDemo() {
+        const vis = document.querySelector('.hidden-visibility');
+        const dis = document.querySelector('.hidden-display');
+        if (vis.style.visibility === 'hidden') {
+            vis.style.visibility = 'visible';
+            dis.style.display = 'block';
+        } else {
+            vis.style.visibility = 'hidden';
+            dis.style.display = 'none';
+        }
+    }
+</script>
 </body>
 </html>
