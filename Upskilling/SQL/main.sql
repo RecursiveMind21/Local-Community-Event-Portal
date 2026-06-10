@@ -1,8 +1,3 @@
--- =====================================================
--- SQL Queries for Community Event Portal
--- 25 Exercises (ANSI SQL / MySQL)
--- =====================================================
-
 -- 1. User Upcoming Events
 SELECT u.full_name, e.title, e.start_date, e.city
 FROM Users u
